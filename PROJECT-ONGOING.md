@@ -5,8 +5,10 @@ While working on your project:
 We would like to document your project on the Global Code website. For this, we would like you to also provide:
 
 * Team names (Can be silly, but keep them clean please!)
+ * Team Alpha
 
 * A name for your product
+ * Code Hub
 
 * Team photos
 
