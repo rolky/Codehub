@@ -1,1 +1,1 @@
-web: gunicorn codehub/codehub.wsgi
+web: gunicorn codehub.wsgi
