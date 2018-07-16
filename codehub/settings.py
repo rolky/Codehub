@@ -75,9 +75,17 @@ WSGI_APPLICATION = 'codehub.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd4l8hos8postei',
+        'USER': 'ybhczmwvyhvpbz',
+        'PASSWORD': '71d14ea198aa22c40c602357febe2837f2f93a8f9b813ebbd31414b3237db4bf',
+        'HOST': 'ec2-54-217-235-16.eu-west-1.compute.amazonaws.com',
+        'POST': '5432'
     }
 }
 
