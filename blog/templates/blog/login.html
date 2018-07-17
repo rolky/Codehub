@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Codehub SignUp</title>
+	<title>CodeHub Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -550,7 +550,12 @@ iframe {
   opacity: 1;
 }
 
-
+@media (max-width: 992px) {
+  .alert-validate::before {
+    visibility: visible;
+    opacity: 1;
+  }
+}
 
 
 
@@ -569,51 +574,30 @@ iframe {
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Sign up
+						Log in
 					</span>
-
-                    <div class="wrap-input100 validate-input" data-validate = "Enter Firstname">
-						<input class="input100" type="text" name="firstname" placeholder="Firstname">
-						
-                    </div>
-                    
-                    <div class="wrap-input100 validate-input" data-validate = "Enter Lastname">
-						<input class="input100" type="text" name="lastname" placeholder="Lastname">
-						
-                    </div>
-                    
-                    <div class="wrap-input100 validate-input" data-validate = "Enter Email">
-                            <input class="input100" type="text" name="email" placeholder="Email">
-                            
-                        </div>
-
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input class="input100" type="text" name="username" placeholder="Username">
-						
-                    </div>
-                    
-                  
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						
+				
 					</div>
 
-				
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="pass" placeholder="Password">
+	
+					</div>
+
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+					</div>
 
 					<div class="container-login100-form-btn">
-                        <a class="loginpage" href="#">
-						    <button class="login100-form-btn">
-							SignUp
-                            </button>
-                        </a>
-                    </div>
-                    <div class="container-login100-form-btn " style="padding: 10px">
-                        <a class="loginpage" href="#">
-						    <button class="login100-form-btn">
-							login
-                            </button>
-                        </a>
+						<button class="login100-form-btn">
+							Login
+						</button>
 					</div>
 
 					<div class="text-center p-t-90">
