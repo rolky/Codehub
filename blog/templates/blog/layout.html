@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">  
+        <title>Codehub</title>
+    
+        {% load static %}
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="{% static 'blog/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/css/font-awesome.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/css/offcanvas.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}"/>
+    
+    </head>
+    <body>
+        <header id="page-header" >
+        {% include 'blog/_header.html' %}
+       </header>
+        <div class="container-fluid">
+           
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <footer class="page-footer">
+             {% include 'blog/_footer.html' %}
+        </footer>
+   
+    </body>
+
+</html> 
