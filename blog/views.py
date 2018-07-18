@@ -8,17 +8,25 @@ from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     categories = Category.objects.all()
-    return render(request, 'blog/index.html',{ 'categories': categories })
+    posts = Post.objects.order_by('-published_date')[:10]
+    return render(request, 'blog/index.html',{ 'categories': categories, 'posts': posts })
 
+
+def create(request):
+    return render(request, 'blog/create.html', {})
+
+def edit(request):
+    return render(request, 'blog/edit.html', {})
+    
 def details(request):
     return render(request, 'blog/details.html',{})
-
 
 def categories(request):
     return render(request, 'blog/categories.html', {})
 
 def about(request):
     return render(request, 'blog/about.html', {})
+
 
 def signup(request):
     return render(request, 'blog/signup.html', {})
