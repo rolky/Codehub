@@ -3,11 +3,14 @@ from.models import Post
 # Create your views here.
 
 def index(request):
-    return render(request, 'blog/index.html',{})
+    posts = Post.objects.all()[:10]
 
-def details(request, id):
-    return render(request, 'blog/categories.html',{})
-
+    
+        
+    return render(request, 'blog/index.html', {'posts' : posts})
+    
+def details(request):
+    return render(request, 'blog/details.html',{})
 
 def categories(request):
     return render(request, 'blog/categories.html', {})
@@ -20,4 +23,11 @@ def signup(request):
 
 def login(request):
     return render(request, 'blog/login.html', {}) 
+
+
+def create(request):
+   
+    return render(request, 'blog/create.html', {})
     
+def update(request):
+    return render(request, 'blog/edit.html', {})  
