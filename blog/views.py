@@ -7,9 +7,10 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
-    posts = Post.objects.all()[:10]
-        
-    return render(request, 'blog/index.html', {'posts' : posts})
+    categories = Category.objects.all()
+    posts = Post.objects.order_by('-published_date')[:10]
+    return render(request, 'blog/index.html',{ 'categories': categories, 'posts': posts })
+
 
 def create(request):
     return render(request, 'blog/create.html', {})
