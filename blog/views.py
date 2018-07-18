@@ -7,17 +7,25 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
-    return render(request, 'blog/index.html',{})
+    posts = Post.objects.all()[:10]
+        
+    return render(request, 'blog/index.html', {'posts' : posts})
 
+def create(request):
+    return render(request, 'blog/create.html', {})
+
+def edit(request):
+    return render(request, 'blog/edit.html', {})
+    
 def details(request):
     return render(request, 'blog/details.html',{})
-
 
 def categories(request):
     return render(request, 'blog/categories.html', {})
 
 def about(request):
     return render(request, 'blog/about.html', {})
+
 
 def signup(request):
     return render(request, 'blog/signup.html', {})
