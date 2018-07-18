@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
-    return render(request, 'blog/index.html',{})
+    categories = Category.objects.all()
+    return render(request, 'blog/index.html',{ 'categories': categories })
 
 def details(request):
     return render(request, 'blog/details.html',{})
