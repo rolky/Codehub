@@ -79,23 +79,23 @@ WSGI_APPLICATION = 'codehub.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'd4l8hos8postei',
-    #     'USER': 'ybhczmwvyhvpbz',
-    #     'PASSWORD': '71d14ea198aa22c40c602357febe2837f2f93a8f9b813ebbd31414b3237db4bf',
-    #     'HOST': 'ec2-54-217-235-16.eu-west-1.compute.amazonaws.com',
-    #     'PORT': '5432'
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd4l8hos8postei',
+        'USER': 'ybhczmwvyhvpbz',
+        'PASSWORD': '71d14ea198aa22c40c602357febe2837f2f93a8f9b813ebbd31414b3237db4bf',
+        'HOST': 'ec2-54-217-235-16.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432'
+    }
 }
 
 # dj_database
 
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Password validation
@@ -145,4 +145,4 @@ STATICFILES_DIR = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
