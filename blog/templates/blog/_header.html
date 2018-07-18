@@ -7,99 +7,17 @@
                 </div>
                 <div class="col-md-3 col-sm-5 xs-view-right">
                     <div class="search-section center-block">
-                        <form>
+                        <!-- <form>
                             <input type="text" class="form-control" id="exampleInputName2" placeholder="Search">
                             <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i></button>
                             <div class=" ">
                         
                             </div>
-                        </form>
+                        </form> -->
+                        <a class="btn btn-success" href="{% url 'blog:login' %}">Sign In</a>
+                        <a class="btn btn-primary" href="{% url 'blog:signup' %}">Sign Up</a>
                     </div>
-                    
-                    <!-- Author -->
-                    <div class="author-form">
-                        <li class="dropdown">
-                            <form>
-                                <a href="#" class="dropdown-toggle author-icon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-user author-icon"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a class="sign" href="#signin" aria-controls="signin" role="tab" data-toggle="tab">sign in</a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a class="sign" href="#signup" aria-controls="signup" role="tab" data-toggle="tab">sign up</a>
-                                        </li>
-                                    </ul>
-
-                                    <!-- Tab panes -->
-                                    <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active" id="signin">
-                                            <ul class="user-dropdown">
-                                                <div class="login-area">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputText1">Username</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1">Password</label>
-                                                        <input type="password" class="form-control" id="exampleInputPassword1">
-                                                    </div>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <input id="option" type="checkbox" name="field" value="option">
-                                                    <label for="option"><span><span></span></span>Keep me singed in</label>
-                                                    <a href="#" class="pull-right">Forgot?</a>
-                                                </div>
-                                                <div class="form-submit">
-                                                        <button type="submit" class="btn btn-success btn-block">Sign in</button>
-                                                </div>
-                                            </ul><!-- /User-Dropdown-->
-                                        </div><!-- /#Sing in -->
-                                        <div role="tabpanel" class="tab-pane" id="signup">
-                                            <ul class="user-dropdown">
-                                                <div class="login-area">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputText1">Firstname</label>
-                                                        <input name="firstname" type="text" class="form-control" id="exampleInputEmail1">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputText1">Lastname</label>
-                                                        <input name="lastname" type="text" class="form-control" id="exampleInputEmail1">
-                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputText1">Username</label>
-                                                        <input name="username" type="email" class="form-control" id="exampleInputEmail1">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Email Address</label>
-                                                        <input name="email" type="email" class="form-control" id="exampleInputEmail1">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1">Password</label>
-                                                        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1">Comfirm Password</label>
-                                                        <input name="confirmpassword" type="password" class="form-control" id="exampleInputPassword1">
-                                                    </div>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <input id="option1" type="checkbox" name="field" value="option1">
-                                                    <label for="option1"><span><span></span></span>I accept Terms and Condition ?</label>
-                                                </div>
-                                                <div class="form-submit">
-                                                        <button type="submit" class="btn btn-success btn-block">Sign up</button>
-                                                </div>
-                                            </ul><!-- /User-Dropdown-->
-                                        </div><!-- /#Sing up -->
-                                    </div><!-- /Tab-Content -->
-                                </ul><!-- /Dropdown-menu -->
-                            </form>
-                        </li><!-- /Dropdown -->
-                    </div><!-- /Author -->
+        
                 </div>
             </div>
         </div><!-- header-top -->
@@ -131,10 +49,10 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
-                            <li><a href="index.html">home</a></li>
-                            <li><a href="About.html">about</a></li>
-                            <li><a href="contact.html">contact</a></li>
-                            <li><a href="details.html">Post Details</a></li>
+                            <li><a href="{% url 'blog:index' %}">home</a></li>
+                            <li><a href="{% url 'blog:about' %}">about</a></li>
+                            <li><a href="#contact.html">contact</a></li>
+                            <!-- <li><a href="#details.html">Post Details</a></li> -->
                         </ul>
                         <ul class="nav navbar-nav navbar-right hidden-xs">
                             <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>

@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
-    return render(request, 'blog/jindex.html',{})
+    return render(request, 'blog/index.html',{})
 
 def details(request):
     return render(request, 'blog/details.html',{})
@@ -20,7 +20,7 @@ def about(request):
     return render(request, 'blog/about.html', {})
 
 def signup(request):
-    return render(request, 'blog/jsignup.html', {})
+    return render(request, 'blog/signup.html', {})
 
 def saveuser(request):
     if request.method == "POST":
@@ -31,7 +31,7 @@ def saveuser(request):
     return HttpResponseRedirect(reverse('blog:index'))
 
 def login(request):
-    return render(request, 'blog/jlogin.html', {})
+    return render(request, 'blog/signin.html', {})
 
 def auth(request):
     if request.method == "POST":
