@@ -89,7 +89,7 @@ DATABASES = {
     #     'USER': 'ybhczmwvyhvpbz',
     #     'PASSWORD': '71d14ea198aa22c40c602357febe2837f2f93a8f9b813ebbd31414b3237db4bf',
     #     'HOST': 'ec2-54-217-235-16.eu-west-1.compute.amazonaws.com',
-    #     'POST': '5432'
+    #     'PORT': '5432'
     # }
 }
 
@@ -134,7 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

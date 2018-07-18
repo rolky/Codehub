@@ -1,12 +1,15 @@
 from django.urls import path
 from . import views
 
+app_name = 'blog'
 
 urlpatterns = [
     path('', views.index, name="index"),
-     path('details/<id>', views.details, name="details"),
+    path('details/<id>', views.details, name="details"),
     path('categories/', views.categories, name="categories"),
     path('signup/', views.signup, name="signup"),
+    path('saveuser/', views.saveuser, name="saveuser"),
     path('login/', views.login, name="login"),
-    path('about/', views.about, name="about")
+    path('auth/', views.auth, name="auth"),
+    path('about/', views.about, name="about"),
 ]
