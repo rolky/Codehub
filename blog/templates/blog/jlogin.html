@@ -1,0 +1,6 @@
+<form method="POST" action="{% url 'blog:auth' %}">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="username"><br/>
+    <input type="text" name="password" placeholder="password"><br/>
+    <input type="submit">
+</form>
