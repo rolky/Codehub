@@ -1,13 +1,10 @@
-{% extends 'blog/layout.html'%}
+
+{% extends 'blog/layout.html' %}
 
 {% block content %}
-<h1 class="center-align blue lighten-3">{{title}}</h1>
-
-<div class="card">
-    <div class="card-content">
-        {{post.created_at}}
-    </div>
+<div class="row row-offcanvas row-offcanvas-left">
+    <textarea class="tinymce"></textarea>
+    <br>
+    <button type="submit" form="nameform" value="Submit" class="btn btn-primary pull-right btn-lg " style="background-color: rgb(102, 187, 106),">Submit</button>
 </div>
-<a href="/blog" class="btn">Go back</a>
-
 {% endblock %}

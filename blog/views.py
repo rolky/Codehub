@@ -9,8 +9,8 @@ from django.contrib.auth import authenticate, login, logout
 def index(request):
     return render(request, 'blog/jindex.html',{})
 
-def details(request, id):
-    return render(request, 'blog/categories.html',{})
+def details(request):
+    return render(request, 'blog/details.html',{})
 
 
 def categories(request):
