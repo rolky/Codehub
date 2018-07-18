@@ -1,13 +1,21 @@
 from django.shortcuts import render
-from.models import Post
+from.models import Post, Category
+from django.contrib.auth.models import User
+from django.http import Http404, HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
     posts = Post.objects.all()[:10]
-
-    
         
     return render(request, 'blog/index.html', {'posts' : posts})
+
+def create(request):
+    return render(request, 'blog/create.html', {})
+
+def edit(request):
+    return render(request, 'blog/edit.html', {})
     
 def details(request):
     return render(request, 'blog/details.html',{})
@@ -18,16 +26,32 @@ def categories(request):
 def about(request):
     return render(request, 'blog/about.html', {})
 
+
 def signup(request):
     return render(request, 'blog/signup.html', {})
 
+def saveuser(request):
+    if request.method == "POST":
+        user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password']);
+        user.last_name = request.POST['lastname']
+        user.first_name = request.POST['firstname']
+        user.save()
+    return HttpResponseRedirect(reverse('blog:index'))
+
 def login(request):
-    return render(request, 'blog/login.html', {}) 
+    return render(request, 'blog/signin.html', {})
 
+def auth(request):
+    if request.method == "POST":
+        user = authenticate(username=request.POST['username'], password=request.POST['password'])
+        if user is not None:
+            # A backend authenticated the credentials
+            login(request, user)
+        else:
+            # No backend authenticated the credentials
+            pass   
+    return HttpResponseRedirect(reverse('blog:index'))
 
-def create(request):
-   
-    return render(request, 'blog/create.html', {})
-    
-def update(request):
-    return render(request, 'blog/edit.html', {})  
+def logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('blog:index'))

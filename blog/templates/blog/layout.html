@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>:: Author Details ::</title>
+    <title>CodeHub Home Page</title>
     {% load static %}
     <!-- Bootstrap -->
 	<link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
@@ -35,14 +35,14 @@
 					{% include 'blog/_leftsidebar.html' %}
 				</div>
 				<!--========================== main-content ================================-->
-				<div class="col-md-6 col-sm-8 col-xs-12">
+				<div class="col-md-9 col-sm-8 col-xs-12">
 					<div class="main-content">
                         {% block content %}
                         
                         {% endblock %}
 					</div><!-- main-content -->
 				</div>
-                    {% include 'blog/_rightsidebar.html' %}
+                  
 			</div>
 			</div><!-- Container -->
         </div><!-- Content-area -->
@@ -56,6 +56,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
     <script src ="{% static 'blog/js/custom.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'blog/js/jquery.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'blog/plugin/tinymce/tinymce.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'blog/plugin/tinymce/init-tinymce.js' %}"></script>
   </body>
 
 </html>

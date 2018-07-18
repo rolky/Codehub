@@ -89,13 +89,13 @@ DATABASES = {
     #     'USER': 'ybhczmwvyhvpbz',
     #     'PASSWORD': '71d14ea198aa22c40c602357febe2837f2f93a8f9b813ebbd31414b3237db4bf',
     #     'HOST': 'ec2-54-217-235-16.eu-west-1.compute.amazonaws.com',
-    #     'POST': '5432'
+    #     'PORT': '5432'
     # }
 }
 
 # dj_database
 
-#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Password validation
@@ -134,7 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -145,4 +145,4 @@ STATICFILES_DIR = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#django_heroku.settings(locals())
+# django_heroku.settings(locals())
