@@ -2,11 +2,9 @@
 
 {% block content %}
 <div>
-    <a href="{% url 'blog:create' %}">
-        <button class="btn pull-right">
+    <a class="btn btn-success pull-right" href="{% url 'blog:create' %}">
         <i class="fa fa-plus"></i>
         Create Post
-        </button>
     </a>
 </div>
     <h1>Dashboard</h1>
@@ -21,17 +19,20 @@
                        <strong>{{ post.title }}</strong> 
                     </td>
                     <td>
-                        <a class="btn btn-warning" type="button">Edit</a>
+                        <a href="{% url 'blog:edit' post.id %}" class="btn btn-warning" type="button">Edit</a>
                     </td>
                     <td>
-                        <a class="btn btn-danger" type="button">Delete</a>
+                        <a href="{% url 'blog:deletepost' post.id %}" class="btn btn-danger" type="button">Delete</a>
                     </td>
                     <td>
-                        <a class="btn btn-primary" type="button">Publish</a>
+                        <a href="{% url 'blog:publishpost' post.id %}" class="btn btn-primary" type="button">Publish</a>
                     </td>
                 </tr>
             {% endfor %}
         </table>
 </div>
+{% else %}
+    <h1>No Post Created Yet</h1>
+    <p>Use the button at the top</p>
 {% endif %}
 {% endblock %}
