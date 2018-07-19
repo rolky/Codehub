@@ -24,7 +24,7 @@
                         <a href="{% url 'blog:edit' post.id %}" class="btn btn-warning" type="button">Edit</a>
                     </td>
                     <td>
-                        <a class="btn btn-danger" type="button">Delete</a>
+                        <a href="{% url 'blog:deletepost' post.id %}" class="btn btn-danger" type="button">Delete</a>
                     </td>
                     <td>
                         <a class="btn btn-primary" type="button">Publish</a>

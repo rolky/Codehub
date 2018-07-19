@@ -1,9 +1,0 @@
-<form method="POST" action="{% url 'blog:saveuser' %}">
-    {% csrf_token %}
-    <input type="text" name="firstname" placeholder="firstname"><br/>
-    <input type="text" name="lastname" placeholder="lastname"><br/>
-    <input type="text" name="username" placeholder="username"><br/>
-    <input type="text" name="email" placeholder="email"><br/>
-    <input type="text" name="password" placeholder="password"><br/>
-    <input type="submit">
-</form>

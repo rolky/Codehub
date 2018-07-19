@@ -71,9 +71,6 @@ def updatepost(request, id):
         post.save()
     return HttpResponseRedirect(reverse('blog:dashboard'))
 
-# def details(request):
-#     return render(request, 'blog/details.html',{})
-
 def categories(request, id):
     category = get_object_or_404(Category, pk=id)
     posts = category.post_set.all().order_by('-published_date')
@@ -111,3 +108,9 @@ def auth(request):
 def auth_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('blog:index'))
+
+def deletepost(request, id):
+    post = Post.objects.get(pk=id)
+    post.delete()
+    return HttpResponseRedirect(reverse('blog:dashboard'))
+    

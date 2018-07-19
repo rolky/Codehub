@@ -18,4 +18,5 @@ urlpatterns = [
     path('edit/<int:id>', views.edit, name="edit"),
     path('update/<int:id>', views.updatepost, name="updatepost"),
     path('logout/', views.auth_logout, name="logout"),
+    path('destroy/<int:id>', views.deletepost, name="deletepost"),
 ]
