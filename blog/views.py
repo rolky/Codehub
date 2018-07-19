@@ -25,6 +25,13 @@ def index(request):
     posts = Post.objects.order_by('-published_date')[:5]
     return render(request, 'blog/index.html',{ 'categories': categories, 'posts': posts })
 
+def dashboard(request):
+    if request.user.is_authenticated:
+        return render(request, 'blog/dashboard.html')
+    else:
+       return HttpResponseRedirect(reverse('blog:index')) 
+        
+
 
 def create(request):
     return render(request, 'blog/create.html', {})
@@ -53,20 +60,20 @@ def saveuser(request):
         user.save()
     return HttpResponseRedirect(reverse('blog:index'))
 
-def login(request):
+def auth_login(request):
     return render(request, 'blog/signin.html', {})
 
 def auth(request):
     if request.method == "POST":
-        user = authenticate(username=request.POST['username'], password=request.POST['password'])
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             # A backend authenticated the credentials
             login(request, user)
+            return HttpResponseRedirect(reverse('blog:dashboard'))
         else:
             # No backend authenticated the credentials
-            pass   
-    return HttpResponseRedirect(reverse('blog:index'))
+            return HttpResponseRedirect(reverse('blog:index'))
 
-def logout(request):
+def auth_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('blog:index'))
