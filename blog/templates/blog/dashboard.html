@@ -1,5 +1,37 @@
 {% extends 'blog/layout.html' %}
 
 {% block content %}
-<h1>Dashboard</h1>
+<div>
+    <a href="{% url 'blog:create' %}">
+        <button class="btn pull-right">
+        <i class="fa fa-plus"></i>
+        Create Post
+        </button>
+    </a>
+</div>
+    <h1>Dashboard</h1>
+<hr>
+{% if posts %}
+<div class="table-responsive">
+
+        <table class="table">
+            {% for post in posts %}
+                <tr>
+                    <td>
+                       <strong>{{ post.title }}</strong> 
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" type="button">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" type="button">Delete</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" type="button">Publish</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+</div>
+{% endif %}
 {% endblock %}

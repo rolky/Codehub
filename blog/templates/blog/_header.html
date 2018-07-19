@@ -7,12 +7,21 @@
                 </div>
                 <div class="col-md-3 col-sm-5 xs-view-right">
                     <div class="search-section center-block">
-                        {% if request.user.is_authenticated %}
-                            <h4 style="color: #fff">Welcome, {{ request.user.username }}</h4>
-                        {% else %}
-                        <a class="btn btn-success" href="{% url 'blog:login' %}">Sign In</a>
-                        <a class="btn btn-primary" href="{% url 'blog:signup' %}">Sign Up</a>
-                        {% endif %}
+                           
+
+                            {% if request.user.is_authenticated %}
+                            
+                                <h3 style="color: #fff">Welcome, {{ request.user.username }}&nbsp;&nbsp;
+
+                                    <a class="btn btn-danger" href="{% url 'blog:logout' %}">log Out</a>
+                                </h3>
+                            {% else %}
+                            
+                         <h2>
+                            <a class="btn btn-success" href="{% url 'blog:login' %}">Sign In</a>
+                            <a class="btn btn-primary" href="{% url 'blog:signup' %}">Sign Up</a>
+                            {% endif %}
+                        </h2>
                     </div>
         
                 </div>
@@ -47,8 +56,10 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-left">
                             <li><a href="{% url 'blog:index' %}">home</a></li>
+                            {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'blog:dashboard' %}">dashboard</a></li>
+                            {% endif %}
                             <li><a href="{% url 'blog:about' %}">about</a></li>
-                            <li><a href="#contact.html">contact</a></li>
                             <!-- <li><a href="#details.html">Post Details</a></li> -->
                         </ul>
                         <ul class="nav navbar-nav navbar-right hidden-xs">
