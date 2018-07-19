@@ -1,10 +1,14 @@
-
 {% extends 'blog/layout.html' %}
 
 {% block content %}
-<div class="row row-offcanvas row-offcanvas-left">
-    <textarea class="tinymce"></textarea>
-    <br>
-    <button type="submit" form="nameform" value="Submit" class="btn btn-primary pull-right btn-lg " style="background-color: rgb(102, 187, 106),">Submit</button>
+<div class="post">
+{% if post.published_date %}
+<div class="date">
+{{ post.published_date }}
 </div>
+{% endif %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.text|linebreaksbr }}</p>
+</div>
+
 {% endblock %}

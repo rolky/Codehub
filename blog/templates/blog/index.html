@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<h1>{{title}}</h1>
+<!-- <h1>{{title}}</h1> -->
 
 <div class="content container">
         <div class="row">
@@ -10,7 +10,8 @@
         {% if posts %}
                 {% for post in posts %}
                 <div class="post">
-                        <h1><a href="">{{ post.title }}</a></h1>
+                        
+                        <h1>{{ post.title }}</h1>
                         <p>{{ post.text|linebreaksbr }}</p>
                         <div class="date">
                         <p>published: {{ post.published_date }}</p>

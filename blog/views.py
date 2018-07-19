@@ -3,7 +3,9 @@ from.models import Post, Category
 from django.contrib.auth.models import User
 from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse
+
 from django.contrib.auth import authenticate, login, logout
+from .forms import PostForm
 # Create your views here.
 
 def index(request):
@@ -11,15 +13,23 @@ def index(request):
     posts = Post.objects.order_by('-published_date')[:10]
     return render(request, 'blog/index.html',{ 'categories': categories, 'posts': posts })
 
-
 def create(request):
-    return render(request, 'blog/create.html', {})
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/edit/')
+    else:
+        form = PostForm()
+        return render(request, 'blog/create.html', {'form': form})
+
 
 def edit(request):
     return render(request, 'blog/edit.html', {})
     
-def details(request):
-    return render(request, 'blog/details.html',{})
+def details(request,pk):
+    post_id = Post.objects.get(pk=pk)
+  #  post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/details.html', {'post': post_id})
 
 def categories(request):
     return render(request, 'blog/categories.html', {})
