@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from.models import Post, Category
 from django.contrib.auth.models import User
 from django.http import Http404, HttpResponseRedirect
@@ -39,11 +39,13 @@ def create(request):
 def edit(request):
     return render(request, 'blog/edit.html', {})
     
-def details(request):
-    return render(request, 'blog/details.html',{})
+# def details(request):
+#     return render(request, 'blog/details.html',{})
 
-def categories(request):
-    return render(request, 'blog/categories.html', {})
+def categories(request, id):
+    category = get_object_or_404(Category, pk=id)
+    posts = category.post_set.all().order_by('-published_date')
+    return render(request, 'blog/categories.html', {'posts':posts})
 
 def about(request):
     return render(request, 'blog/about.html', {})
