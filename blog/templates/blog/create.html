@@ -1,0 +1,11 @@
+<h1>create Page</h1>
+<form method="POST" action="{% url 'blog:savepost' %}">
+    {% csrf_token %}
+<input name="title">
+<textarea name="text"></textarea>
+{% for category in categories %}
+<input type="radio" name="category" id="category{{ forloop.counter}}" value="{{ category.id }}">
+<label for="category{{ forloop.counter }}">{{ category.name }}</label><br>
+{% endfor %}
+<input type="submit" value="vote">
+</form>

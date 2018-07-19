@@ -34,7 +34,25 @@ def dashboard(request):
 
 
 def create(request):
-    return render(request, 'blog/create.html', {})
+    if request.user.is_authenticated:
+        categories = Category.objects.all()
+        return render(request, 'blog/create.html', {'categories':categories})
+    else:
+       return HttpResponseRedirect(reverse('blog:index'))
+
+
+def savepost(request):
+    if request.user.is_authenticated:
+        user = request.user
+        category = Category(pk=request.POST['category'])
+        title = request.POST['title']
+        text = request.POST['text']
+        post = Post(user=user, category=category, title=title, text=text)
+        post.save()
+    return HttpResponseRedirect(reverse('blog:index'))
+       
+
+
 
 def edit(request):
     return render(request, 'blog/edit.html', {})
@@ -60,7 +78,7 @@ def saveuser(request):
         user.last_name = request.POST['lastname']
         user.first_name = request.POST['firstname']
         user.save()
-    return HttpResponseRedirect(reverse('blog:index'))
+    return HttpResponseRedirect(reverse('blog:auth_login'))
 
 def auth_login(request):
     return render(request, 'blog/signin.html', {})
