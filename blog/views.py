@@ -22,7 +22,7 @@ class DetailView(generic.DetailView):
 
 def index(request):
     categories = Category.objects.all()
-    posts = Post.objects.order_by('-published_date')[:5]
+    posts = Post.objects.exclude(published_date__isnull=True).order_by('-published_date')[:5]
     return render(request, 'blog/index.html', { 'categories': categories, 'posts': posts })
 
 def dashboard(request):
@@ -44,8 +44,8 @@ def create(request):
 
 def savepost(request):
     if request.user.is_authenticated:
-        user = request.user
-        category = Category(pk=request.POST['category'])
+        category = int(request.POST['category'])
+        user = User.objects.get(pk=request.user.id)
         title = request.POST['title']
         text = request.POST['text']
         post = Post(user=user, category=category, title=title, text=text)
@@ -88,8 +88,9 @@ def saveuser(request):
         user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password']);
         user.last_name = request.POST['lastname']
         user.first_name = request.POST['firstname']
+        user.is_staff=True
         user.save()
-    return HttpResponseRedirect(reverse('blog:auth_login'))
+    return HttpResponseRedirect(reverse('blog:login'))
 
 def auth_login(request):
     return render(request, 'blog/signin.html', {})
@@ -114,3 +115,7 @@ def deletepost(request, id):
     post.delete()
     return HttpResponseRedirect(reverse('blog:dashboard'))
     
+def publishpost(request, id):
+    post = Post.objects.get(pk=id)
+    post.publish()
+    return HttpResponseRedirect(reverse('blog:dashboard'))
