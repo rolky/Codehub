@@ -1,8 +1,11 @@
-{% extends 'blog/layout.html' %}
-{% block content %}
-<h1>New post</h1>
-<form action="/create/" method="POST" class="post-form">{% csrf_token %}
-{{ form.as_p }}
-<button type="submit" class="save btn btn-default">Save</button>
+<h1>create Page</h1>
+<form method="POST" action="{% url 'blog:savepost' %}">
+    {% csrf_token %}
+<input name="title">
+<textarea name="text"></textarea>
+{% for category in categories %}
+<input type="radio" name="category" id="category{{ forloop.counter}}" value="{{ category.id }}">
+<label for="category{{ forloop.counter }}">{{ category.name }}</label><br>
+{% endfor %}
+<input type="submit" value="vote">
 </form>
-{% endblock %}
