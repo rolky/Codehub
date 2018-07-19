@@ -21,7 +21,7 @@
                        <strong>{{ post.title }}</strong> 
                     </td>
                     <td>
-                        <a class="btn btn-warning" type="button">Edit</a>
+                        <a href="{% url 'blog:edit' post.id %}" class="btn btn-warning" type="button">Edit</a>
                     </td>
                     <td>
                         <a class="btn btn-danger" type="button">Delete</a>

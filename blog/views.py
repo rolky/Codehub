@@ -3,7 +3,6 @@ from.models import Post, Category
 from django.contrib.auth.models import User
 from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse
-
 from django.contrib.auth import authenticate, login, logout
 from django.views import generic
 
@@ -24,7 +23,7 @@ class DetailView(generic.DetailView):
 def index(request):
     categories = Category.objects.all()
     posts = Post.objects.order_by('-published_date')[:5]
-    return render(request, 'blog/index.html',{ 'categories': categories, 'posts': posts })
+    return render(request, 'blog/index.html', { 'categories': categories, 'posts': posts })
 
 def dashboard(request):
     if request.user.is_authenticated:
@@ -56,9 +55,22 @@ def savepost(request):
 
 
 
-def edit(request):
-    return render(request, 'blog/edit.html', {})
+def edit(request, id):
+    post = Post.objects.get(pk=id)
+    categories = Category.objects.all()
+    return render(request, 'blog/edit.html', {'post': post, 'categories': categories})
     
+
+def updatepost(request, id):
+    if request.user.is_authenticated:
+        user = request.user
+        post = Post.objects.get(pk=id)
+        post.title = request.POST['title']
+        post.text = request.POST['text']
+        post.category = Category(pk=request.POST['category'])
+        post.save()
+    return HttpResponseRedirect(reverse('blog:dashboard'))
+
 # def details(request):
 #     return render(request, 'blog/details.html',{})
 
