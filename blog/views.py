@@ -4,11 +4,25 @@ from django.contrib.auth.models import User
 from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
+from django.views import generic
+
+class DetailView(generic.DetailView):
+    model = Post
+    template_name = 'blog/details.html'
+
+# class IndexView(generic.ListView):
+#     template_name = 'blog/index.html'
+#     context_object_name = 'posts'
+
+#     def get_queryset(self):
+#         """Return the last five publication"""
+#         return Post.objects.order_by('-published_date')[:5]
+
 # Create your views here.
 
 def index(request):
     categories = Category.objects.all()
-    posts = Post.objects.order_by('-published_date')[:10]
+    posts = Post.objects.order_by('-published_date')[:5]
     return render(request, 'blog/index.html',{ 'categories': categories, 'posts': posts })
 
 
