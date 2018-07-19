@@ -10,12 +10,24 @@
         {% if posts %}
                 {% for post in posts %}
                 <div class="post">
-                        <h2><a href="{% url 'blog:details' post.id %}">{{ post.title }}</a></h2>
-                        <p>{{ post.text | truncatewords:50 | safe }}</p>
+                                <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                                  
+                                        <h2 class="panel-title"><a href="{% url 'blog:details' post.id %}">{{ post.title }}</a></h2>
+                                        </div>
+                                        <div class="panel-body">
+                                                        <p>{{ post.text | truncatewords:50 | safe }}</p>
 
-                        <div class="date">
-                        <p>published: {{ post.published_date }}</p>
-                        </div>
+                                                       </div>
+                                                        <div class="panel-footer">
+                                                        <div class="date">
+                                                                        <p>published: {{ post.published_date }}</p>
+                                                                        </div>
+                                                
+                                                </div>
+                                              </div>       
+                        
+                        
                 </div>
                 {% endfor %}
         {% endif %}
