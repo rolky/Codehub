@@ -27,7 +27,8 @@ def index(request):
 
 def dashboard(request):
     if request.user.is_authenticated:
-        return render(request, 'blog/dashboard.html')
+        posts = request.user.post_set.all()
+        return render(request, 'blog/dashboard.html', {'posts' : posts})
     else:
        return HttpResponseRedirect(reverse('blog:index')) 
         
