@@ -50,7 +50,7 @@ def savepost(request):
         text = request.POST['text']
         post = Post(user=user, category=category, title=title, text=text)
         post.save()
-    return HttpResponseRedirect(reverse('blog:index'))
+    return HttpResponseRedirect(reverse('blog:dashboard'))
        
 
 
