@@ -7,7 +7,7 @@
         Create Post
     </a>
 </div>
-    <h1>Dashboard</h1>
+    <h1 class="post">Your Posts</h1>
 <hr>
 {% if posts %}
 <div class="table-responsive">
@@ -16,7 +16,7 @@
             {% for post in posts %}
                 <tr>
                     <td>
-                       <strong>{{ post.title }}</strong> 
+                       <strong><a href="{% url 'blog:details' post.id %}">{{ post.title }}</a></strong> 
                     </td>
                     <td>
                         <a href="{% url 'blog:edit' post.id %}" class="btn btn-warning" type="button">Edit</a>
