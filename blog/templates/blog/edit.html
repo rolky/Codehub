@@ -1,0 +1,26 @@
+{% extends 'blog/layout.html' %}
+
+{% block content %}
+<h1>Edit Page</h1>
+{% if post %}
+<form method="POST" action="{% url 'blog:updatepost' post.id %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>Title</label>
+        <input name="title" type="text" class="form-control" value="{{ post.title }}">
+    </div>
+    <div class="form-group">
+        <select name="category" class="form-control">
+            {% for category in categories %}
+            <option value="{{ category.id }}" {% if category.id == post.category.id %} selected {% endif %}>{{ category.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Text</label>
+        <textarea name="text" class="tinymce">{{ post.text }}</textarea>
+    </div>
+    <input class="btn btn-success" type="submit" value="edit">
+</form>
+{% endif %}
+{% endblock %}
